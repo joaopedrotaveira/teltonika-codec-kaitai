@@ -1,0 +1,1 @@
+# Teltonika Codec Kaitai structures
