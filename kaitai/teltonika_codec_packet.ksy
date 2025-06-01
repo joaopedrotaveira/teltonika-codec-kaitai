@@ -1,5 +1,5 @@
 meta:
-  id: teltonika_codec
+  id: teltonika_codec_packet
   endian: be
   file-extension: telcodec
 
@@ -12,7 +12,7 @@ seq:
     type: u1
     valid:
       any-of: [0x08, 0x8E, 0x10, 0x0C, 0x0D, 0x0E]
-  - id: number_of_data_1
+  - id: num_avl_data
     type: u1
   - id: avl_data
     type:
@@ -22,7 +22,7 @@ seq:
             0x8E: avl_data_codec_8e
             0x10: avl_data_codec_16
     repeat: expr
-    repeat-expr: number_of_data_1
+    repeat-expr: num_avl_data
 
   - id: number_of_data_2
     type: u1
@@ -84,33 +84,33 @@ types:
       - id: n_of_total_io
         type: u1
 
-      - id: n_of_one_byte_io
+      - id: num_one_byte_pairs
         type: u1
       - id: one_byte_pairs
         type: io_one_byte
         repeat: expr
-        repeat-expr: n_of_one_byte_io
+        repeat-expr: num_one_byte_pairs
 
-      - id: n_of_two_byte_io
+      - id: num_two_byte_pairs
         type: u1
       - id: two_byte_pairs
         type: io_two_byte
         repeat: expr
-        repeat-expr: n_of_two_byte_io
+        repeat-expr: num_two_byte_pairs
 
-      - id: n_of_four_byte_io
+      - id: num_four_byte_pairs
         type: u1
       - id: four_byte_pairs
         type: io_four_byte
         repeat: expr
-        repeat-expr: n_of_four_byte_io
+        repeat-expr: num_four_byte_pairs
 
-      - id: n_of_eight_byte_io
+      - id: num_eight_byte_pairs
         type: u1
       - id: eight_byte_pairs
         type: io_eight_byte
         repeat: expr
-        repeat-expr: n_of_eight_byte_io
+        repeat-expr: num_eight_byte_pairs
 
   io_element_8e:
     seq:
@@ -119,40 +119,40 @@ types:
       - id: n_of_total_io
         type: u2
 
-      - id: n_of_one_byte_io
+      - id: num_one_byte_pairs
         type: u2
       - id: one_byte_pairs
         type: io_one_byte2
         repeat: expr
-        repeat-expr: n_of_one_byte_io
+        repeat-expr: num_one_byte_pairs
 
-      - id: n_of_two_byte_io
+      - id: num_two_byte_pairs
         type: u2
       - id: two_byte_pairs
         type: io_two_byte2
         repeat: expr
-        repeat-expr: n_of_two_byte_io
+        repeat-expr: num_two_byte_pairs
 
-      - id: n_of_four_byte_io
+      - id: num_four_byte_pairs
         type: u2
       - id: four_byte_pairs
         type: io_four_byte2
         repeat: expr
-        repeat-expr: n_of_four_byte_io
+        repeat-expr: num_four_byte_pairs
 
-      - id: n_of_eight_byte_io
+      - id: num_eight_byte_pairs
         type: u2
       - id: eight_byte_pairs
         type: io_eight_byte2
         repeat: expr
-        repeat-expr: n_of_eight_byte_io
+        repeat-expr: num_eight_byte_pairs
 
-      - id: n_of_x_byte_io
+      - id: num_x_byte_pairs
         type: u2
       - id: x_byte_pairs
         type: io_x_byte2
         repeat: expr
-        repeat-expr: n_of_x_byte_io
+        repeat-expr: num_x_byte_pairs
 
   io_element_16:
     seq:
@@ -164,33 +164,33 @@ types:
       - id: n_of_total_io
         type: u1
 
-      - id: n_of_one_byte_io
+      - id: num_one_byte_pairs
         type: u1
       - id: one_byte_pairs
         type: io_one_byte2
         repeat: expr
-        repeat-expr: n_of_one_byte_io
+        repeat-expr: num_one_byte_pairs
 
-      - id: n_of_two_byte_io
+      - id: num_two_byte_pairs
         type: u1
       - id: two_byte_pairs
         type: io_two_byte2
         repeat: expr
-        repeat-expr: n_of_two_byte_io
+        repeat-expr: num_two_byte_pairs
 
-      - id: n_of_four_byte_io
+      - id: num_four_byte_pairs
         type: u1
       - id: four_byte_pairs
         type: io_four_byte2
         repeat: expr
-        repeat-expr: n_of_four_byte_io
+        repeat-expr: num_four_byte_pairs
 
-      - id: n_of_eight_byte_io
+      - id: num_eight_byte_pairs
         type: u1
       - id: eight_byte_pairs
         type: io_eight_byte2
         repeat: expr
-        repeat-expr: n_of_eight_byte_io
+        repeat-expr: num_eight_byte_pairs
 
   io_one_byte:
     seq:
@@ -245,10 +245,10 @@ types:
     seq:
       - id: id
         type: u2
-      - id: length
+      - id: len_value
         type: u2
       - id: value
-        size: length
+        size: len_value
 
 enums:
   priority:
